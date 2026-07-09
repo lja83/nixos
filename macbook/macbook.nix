@@ -14,5 +14,5 @@
   boot.extraModulePackages = lib.mkAfter [ config.boot.kernelPackages.broadcom_sta ];
   boot.blacklistedKernelModules = lib.mkAfter [ "b43" "bcma" "brcmfmac" "brcmsmac" "ssb" ];
 
-  networking.hostName = "macbook"; # Define your hostname.
+  networking.hostName = "nixos-macbook"; # Define your hostname.
 }
