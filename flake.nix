@@ -7,9 +7,15 @@
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
+    nixosConfigurations.nixos-macbook = nixpkgs.lib.nixosSystem {
+      modules = [
+        ./macbook/configuration.nix
+      ];
+    };
+
     nixosConfigurations.nixos-desktop = nixpkgs.lib.nixosSystem {
       modules = [
-        ./configuration.nix
+        ./desktop/configuration.nix
       ];
     };
   };
