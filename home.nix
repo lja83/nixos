@@ -8,14 +8,20 @@
     neovim
     dysk
     pastel
-    zenity
+    # zenity
     astroterm
   ];
 
   programs.git = {
     enable = true;
-    userName = "Jeff Apczynski";
-    userEmail = "jeff.apczynski@gmail.com";
+    settings = {
+      init.defaultBranch = "main";
+      user.name = "Jeff Apczynski";
+      user.email = "jeff.apczynski@gmail.com";
+      safe = {
+        directory = "/etc/nixos";
+      };
+    };
   };
 
   home.stateVersion = "26.05";
