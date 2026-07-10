@@ -32,7 +32,12 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.jeff = import ./home.nix;
+          home-manager.users.jeff = { ... }: {
+            imports = [
+              (import ./home.nix)
+            ];
+            home.username = "jeff";
+          };
         }
       ];
     };
