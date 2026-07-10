@@ -176,8 +176,6 @@
     vlc
     bazaar
     dysk
-    pastel
-    zenity
     obsidian
     zoom-us
     discord
