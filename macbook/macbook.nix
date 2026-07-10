@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, hostname, ... }:
 
 {
   nixpkgs.config.permittedInsecurePackages = [
@@ -14,5 +14,5 @@
   boot.extraModulePackages = lib.mkAfter [ config.boot.kernelPackages.broadcom_sta ];
   boot.blacklistedKernelModules = lib.mkAfter [ "b43" "bcma" "brcmfmac" "brcmsmac" "ssb" ];
 
-  networking.hostName = "nixos-macbook"; # Define your hostname.
+  networking.hostName = hostname;
 }

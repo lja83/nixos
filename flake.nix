@@ -12,12 +12,20 @@
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
     nixosConfigurations.nixos-macbook = nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        hostname = "nixos-macbook";
+      };
+
       modules = [
         ./macbook/configuration.nix
       ];
     };
 
     nixosConfigurations.nixos-desktop = nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        hostname = "nixos-desktop";
+      };
+
       modules = [
         ./desktop/configuration.nix
         home-manager.nixosModules.home-manager
