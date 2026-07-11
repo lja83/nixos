@@ -88,6 +88,17 @@
     packages = with pkgs; [ ];
   };
 
+  environment.shellAliases = {
+    vim = "nvim";
+  };
+  environment.interactiveShellInit = ''
+    if [ -n "$NVIM" ]; then
+      alias vim="nvr"
+      alias nvim="nvr"
+    fi
+  '';
+
+
   # Install firefox.
   programs.firefox.enable = true;
   programs.steam.enable = true;
@@ -138,23 +149,24 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-    neovim
-    pciutils
-    nomachine-client
-    eog
-    vlc
-    bazaar
-    dysk
-    obsidian
-    zoom-us
-    discord
-    git
-    pastel
-    zenity
     astroterm
+    bazaar
+    discord
     distrobox
+    dysk
+    eog
+    git
+    neovim
+    neovim-remote
+    nomachine-client
+    obsidian
+    pastel
+    pciutils
+    tree
+    vlc
+    wget
+    zenity
+    zoom-us
   ];
 
   fonts.packages = with pkgs; [
