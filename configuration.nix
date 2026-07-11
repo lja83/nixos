@@ -129,6 +129,11 @@
     };
   };
 
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -149,6 +154,7 @@
     pastel
     zenity
     astroterm
+    distrobox
   ];
 
   fonts.packages = with pkgs; [
