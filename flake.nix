@@ -4,10 +4,6 @@
   inputs = {
     # NixOS official package source, using the nixos-26.05 branch
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
-    home-manager = {
-      url = "github:nix-community/home-manager/release-26.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
@@ -17,7 +13,8 @@
       };
 
       modules = [
-        ./macbook/configuration.nix
+        ./configuration.nix
+        ./hosts/macbook
       ];
     };
 
@@ -27,18 +24,8 @@
       };
 
       modules = [
-        ./desktop/configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.jeff = { ... }: {
-            imports = [
-              (import ./home.nix)
-            ];
-            home.username = "jeff";
-          };
-        }
+        ./configuration.nix
+        ./hosts/desktop
       ];
     };
   };

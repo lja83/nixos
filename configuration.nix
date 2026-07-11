@@ -5,38 +5,11 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./macbook.nix
-    ];
+  imports = [ ];
 
   # Bootloader.
   # boot.loader.systemd-boot.enable = true;
   # boot.loader.efi.canTouchEfiVariables = true;
-
-  boot.loader = {
-    grub = {
-      enable = true;
-      device = "nodev";
-      efiSupport = true;
-      copyKernels = false;
-      useOSProber = true;
-      extraEntries = ''
-        menuentry "Bazzite" --class fedora {
-	  insmod chain
-	  search --no-floppy --fs-uuid --set=root 31C1-2B9B
-	  chainloader /EFI/fedora/grubx64.efi
-	}
-      '';
-    };
-    efi.canTouchEfiVariables = true;
-  };
-
-  # boot.plymouth = {
-  #   enable = true;
-  #   theme = "details";
-  # };
 
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -74,8 +47,7 @@
   services.displayManager.ly.enable = true;
   services.displayManager.ly.settings = {
     animation = "matrix";
-    # cmatrix_min_codepoint = "0x21";
-    # cmatrix_max_codepoint = "0x7B";
+    shell = false;
   };
   services.desktopManager.plasma6.enable = true;
 
@@ -114,7 +86,7 @@
     description = "jeff";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      kdePackages.kate
+    #  kdePackages.kate
     #  thunderbird
     ];
   };
@@ -123,8 +95,42 @@
   programs.firefox.enable = true;
   programs.steam.enable = true;
 
+  programs.obs-studio = {
+    enable = true;
+    package = (
+      pkgs.obs-studio.override {
+        cudaSupport = true;
+      }
+    );
+
+    plugins = with pkgs.obs-studio-plugins; [
+      wlrobs
+      obs-backgroundremoval
+      obs-pipewire-audio-capture
+      obs-gstreamer
+      obs-vkcapture
+    ];
+  };
+
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    v4l2loopback
+  ];
+  boot.kernelModules = [ "v4l2loopback" ];
+  boot.extraModprobeConfig = ''
+    options v42loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+  '';
+  security.polkit.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  services.flatpak.enable = true;
+  environment.etc = {
+    "flatpak/remotes.d/flathub.flatpakrepo".source = pkgs.fetchurl {
+      url = "https://dl.flathub.org/repo/flathub.flatpakrepo";
+      hash = "sha256-M3HdJQ5h2eFjNjAHP+/aFTzUQm9y9K+gwzc64uj+oDo=";
+    };
+  };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # List packages installed in system profile. To search, run:
@@ -134,8 +140,43 @@
   #  wget
     neovim
     pciutils
+    nomachine-client
+    eog
+    vlc
+    bazaar
+    dysk
+    obsidian
+    zoom-us
+    discord
     git
+    pastel
+    zenity
+    astroterm
   ];
+
+  fonts.packages = with pkgs; [
+    inter
+    adwaita-fonts
+    nerd-fonts.fira-code
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
+    liberation_ttf
+    dejavu_fonts
+  ];
+
+  fonts.fontconfig = {
+    enable = true;
+    hinting.enable = true;
+    subpixel.rgba = "rgb";
+    subpixel.lcdfilter = "default";
+    defaultFonts = {
+      sansSerif = [ "Adwaita Sans" ];
+      serif = [ "Noto Serif" "DejaVu Serif" ];
+      monospace = [ "Fira Code" "DejaVu Sans Mono" ];
+      emoji = [ "Noto Color Emoji" ];
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -148,7 +189,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

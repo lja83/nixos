@@ -5,6 +5,27 @@
 { config, pkgs, lib, hostname, ... }:
 
 {
+  imports = [
+    ./hardware-configuration.nix
+  ];
+
+  boot.loader = {
+    grub = {
+      enable = true;
+      device = "nodev";
+      efiSupport = true;
+      copyKernels = false;
+      extraEntries = ''
+        menuentry "Bazzite" --class fedora {
+          insmod chain
+          search --no-floppy --fs-uuid --set=root E1E7-1988
+          chainloader /EFI/fedora/grubx64.efi
+      }
+      '';
+    };
+    efi.canTouchEfiVariables = true;
+  };
+
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
