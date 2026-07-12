@@ -1,13 +1,22 @@
 { config, pkgs, lib, ... }:
 
 {
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
     gns3-gui
     gns3-server
     dynamips
     ubridge
     vpcs
+    telnet
   ];
+
+  services.gns3-server = {
+    settings = {
+      Server = {
+        ubridge_path = "${config.security.wrapperDir}/ubridge";
+      };
+    };
+  };
 
   security.wrappers.ubridge = {
     source = "${pkgs.ubridge}/bin/ubridge";
@@ -16,7 +25,7 @@
     capabilities = "cap_net_admin,cap_net_raw=ep";
   };
 
-  user.users.jeff = {
-    extraGroups = [ "gns3" "ubridge" ];
-  };
+  # users.users."jeff" = {
+  #   extraGroups = [ "gns3" "ubridge" ];
+  # };
 }
