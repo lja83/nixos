@@ -7,7 +7,7 @@
     dynamips
     ubridge
     vpcs
-    telnet
+    inetutils
   ];
 
   services.gns3-server = {

@@ -160,6 +160,7 @@
     file
     git
     htop
+    inetutils
     neovim
     neovim-remote
     nomachine-client
