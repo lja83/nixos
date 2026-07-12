@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
+  my.bluetooth.class = 0x000100;
 
   hardware.bluetooth = {
     enable = true;
@@ -9,7 +10,7 @@
       experimental = true;
       Privacy = "device";
       JustWorksRepairing = "always";
-      Class = "0x000100";
+      # Class = "0x000100";
       FastConnectable = true;
     };
   };

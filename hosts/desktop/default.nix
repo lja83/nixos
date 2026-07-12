@@ -6,6 +6,7 @@
 
 {
   imports = [
+    ./bluetooth-class.nix
     ./hardware-configuration.nix
     ./xbox-controller.nix
     ./bluetooth-headset.nix
