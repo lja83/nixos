@@ -6,10 +6,8 @@
 
 {
   imports = [
-    ./bluetooth-class.nix
     ./hardware-configuration.nix
-    ./xbox-controller.nix
-    ./bluetooth-headset.nix
+    ./bluetooth.nix
   ];
 
   #boot.kernelPackages = pkgs.linuxPackages_latest;

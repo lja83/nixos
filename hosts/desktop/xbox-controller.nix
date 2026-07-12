@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  my.bluetooth.class = 0x000100;
+  my.bluetooth.class = "0x000100";
 
   hardware.bluetooth = {
     enable = true;

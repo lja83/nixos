@@ -1,12 +1,14 @@
 { config, pkgs, lib, ... }:
 
 {
-  my.bluetooth.class = 0x20041C;
+  my.bluetooth.class = "0x20041C";
 
   hardware.bluetooth = {
     enable = true;
-    settings.General = {
-      # Class = "0x20041C";
+    settings = {
+      General = {
+        Class = "0x20041C";
+      };
       LE = {
         # Reduce Bluetooth LE connection latency for faster response times
         MinConnectionInterval = 16;

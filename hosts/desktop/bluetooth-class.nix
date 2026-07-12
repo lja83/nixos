@@ -2,11 +2,15 @@
 
 let
   bitOrType = lib.mkOptionType {
-    name = "bitwise-or-integer";
-    description = "Integers combined with bitwise OR";
-    check = builtins.isInt;
-    memrge = loc: defs:
-      builtins.foldl' builtins.bitOr 0 (map (d: d.value) defs);
+    name = "hex-bitwise-or";
+    description = "Hex strings merged using bitwise OR";
+    check = builtins.isString;
+    merge = loc: defs:
+      let
+        values = map (d: lib.fromHexString d.value) defs;
+        combined = builtins.foldl' builtins.bitOr 0 values;
+      in
+        "0x" + lib.toHexString combined;
   };
 in
 {
