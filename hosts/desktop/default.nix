@@ -8,6 +8,7 @@
   imports = [
     ./hardware-configuration.nix
     ./xbox-controller.nix
+    ./bluetooth-headset.nix
   ];
 
   #boot.kernelPackages = pkgs.linuxPackages_latest;
