@@ -7,7 +7,7 @@
     enable = true;
     settings = {
       General = {
-        Class = "0x20041C";
+        Class = lib.mkDefault config.my.bluetooth.class;
       };
       LE = {
         # Reduce Bluetooth LE connection latency for faster response times

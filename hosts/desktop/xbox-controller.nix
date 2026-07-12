@@ -10,7 +10,7 @@
       experimental = true;
       Privacy = "device";
       JustWorksRepairing = "always";
-      # Class = "0x000100";
+      Class = lib.mkDefault config.my.bluetooth.class;
       FastConnectable = true;
     };
   };
