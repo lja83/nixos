@@ -167,6 +167,7 @@
     obsidian
     pastel
     pciutils
+    stow
     tree
     vlc
     wget

@@ -7,6 +7,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./xbox-controller.nix
   ];
 
   #boot.kernelPackages = pkgs.linuxPackages_latest;
