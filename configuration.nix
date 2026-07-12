@@ -5,7 +5,9 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [ ];
+  imports = [
+    ./gns3.nix
+  ];
 
   # Bootloader.
   # boot.loader.systemd-boot.enable = true;
