@@ -155,7 +155,9 @@
     distrobox
     dysk
     eog
+    file
     git
+    htop
     neovim
     neovim-remote
     nomachine-client
