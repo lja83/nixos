@@ -31,9 +31,11 @@
     "broadcom-sta-6.30.223.271-59-6.18.38"
 
   ];
-  boot.kernelModules = lib.mkAfter [ "wl" ];
-  boot.extraModulePackages = lib.mkAfter [ config.boot.kernelPackages.broadcom_sta ];
-  boot.blacklistedKernelModules = lib.mkAfter [ "b43" "bcma" "brcmfmac" "brcmsmac" "ssb" ];
+  boot.kernelModules = [ "wl" ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    broadcom_sta
+  ];
+  boot.blacklistedKernelModules = [ "b43" "bcma" "brcmfmac" "brcmsmac" "ssb" ];
 
   networking.hostName = hostname;
 }
