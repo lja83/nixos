@@ -147,6 +147,11 @@
     dockerCompat = true;
   };
 
+  # virtualisation.vswitch = {
+  #   enable = true;
+  #   resetOnStart = true;
+  # };
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -168,9 +173,11 @@
     pastel
     pciutils
     stow
+    tcpdump
     tree
     vlc
     wget
+    wireshark
     zenity
     zoom-us
   ];
