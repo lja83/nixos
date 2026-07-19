@@ -44,6 +44,12 @@
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
+  # Enable avahi for mdns
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+  };
+
   # Enable the KDE Plasma Desktop Environment.
   # services.displayManager.sddm.enable = true;
   services.displayManager.ly.enable = true;
