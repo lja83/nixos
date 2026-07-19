@@ -176,11 +176,14 @@
     pciutils
     stow
     tree
+    uv
     vlc
     wget
     zenity
     zoom-us
   ];
+
+  programs.nix-ld.enable = true;
 
   fonts.packages = with pkgs; [
     inter
