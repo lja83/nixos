@@ -169,6 +169,7 @@
     inetutils
     neovim
     neovim-remote
+    nix-search-cli
     nomachine-client
     obsidian
     pastel
