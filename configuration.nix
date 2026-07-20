@@ -96,17 +96,6 @@
     packages = with pkgs; [ ];
   };
 
-  environment.shellAliases = {
-    vim = "nvim";
-  };
-  environment.interactiveShellInit = ''
-    if [ -n "$NVIM" ]; then
-      alias vim="nvr"
-      alias nvim="nvr"
-    fi
-  '';
-
-
   # Install firefox.
   programs.firefox.enable = true;
   programs.steam.enable = true;
@@ -163,6 +152,7 @@
     distrobox
     dysk
     eog
+    eza
     file
     git
     htop
