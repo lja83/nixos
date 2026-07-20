@@ -153,6 +153,7 @@
   environment.systemPackages = with pkgs; [
     astroterm
     bazaar
+    chezmoi
     discord
     distrobox
     dysk
