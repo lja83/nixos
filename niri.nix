@@ -11,6 +11,7 @@
     swaylock
     mako
     swayidle
+    xwayland-satellite
   ];
 
   security.polkit.enable = true;
