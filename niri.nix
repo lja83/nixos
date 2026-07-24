@@ -16,4 +16,6 @@
   security.polkit.enable = true;
   security.pam.services.swaylock = {};
   programs.waybar.enable = true;
+
+  programs.ssh.startAgent = false;
 }

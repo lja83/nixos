@@ -100,7 +100,7 @@
   # Install firefox.
   programs.firefox.enable = true;
   programs.steam.enable = true;
-  programs.ssh.startAgent = true;
+  programs.ssh.startAgent = lib.mkDefault true;
 
   programs.obs-studio = {
     enable = true;
