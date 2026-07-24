@@ -16,7 +16,11 @@
 
   security.polkit.enable = true;
   security.pam.services.swaylock = {};
-  programs.waybar.enable = true;
+
+  programs.waybar = {
+    enable = true;
+    systemd.target = "niri.service";
+  };
 
   programs.ssh.startAgent = false;
 }
