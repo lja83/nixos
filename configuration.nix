@@ -141,7 +141,7 @@
 
   virtualisation.podman = {
     enable = true;
-    dockerCompat = true;
+    #dockerCompat = true;
   };
 
   # virtualisation.vswitch = {
@@ -156,7 +156,6 @@
     astroterm
     bazaar
     chezmoi
-    discord
     distrobox
     dysk
     eog

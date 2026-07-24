@@ -25,6 +25,15 @@
     capabilities = "cap_net_admin,cap_net_raw=ep";
   };
 
+  virtualisation.docker = {
+    enable = true;
+    storageDriver = "btrfs";
+  };
+
+  users.users."jeff" = {
+    extraGroups = [ "docker" ];
+  };
+
   # users.users."jeff" = {
   #   extraGroups = [ "gns3" "ubridge" ];
   # };
