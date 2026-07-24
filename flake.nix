@@ -25,6 +25,7 @@
 
       modules = [
         ./configuration.nix
+        ./niri.nix
         ./hosts/desktop
       ];
     };
