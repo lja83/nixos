@@ -2,11 +2,20 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   imports = [
     ./gns3.nix
+  ];
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      unstable = import inputs.nixpkgs-unstable {
+        system = prev.system;
+        config.allowUnfree = true;
+      };
+    })
   ];
 
   # Bootloader.
@@ -147,6 +156,7 @@
     obsidian
     pastel
     pciutils
+    unstable.pi-coding-agent
     stow
     tcpdump
     tree

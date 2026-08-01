@@ -8,6 +8,7 @@
   imports = [
     ./hardware-configuration.nix
     ./bluetooth.nix
+    ./ai.nix
   ];
 
   #boot.kernelPackages = pkgs.linuxPackages_latest;
