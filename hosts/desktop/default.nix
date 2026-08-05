@@ -40,6 +40,7 @@
 
   environment.systemPackages = with pkgs; [
     nvtopPackages.full
+    zoom-us
   ];
 
   programs.obs-studio = {

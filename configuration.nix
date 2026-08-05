@@ -155,7 +155,6 @@
     wget
     wireshark
     zenity
-    zoom-us
   ];
 
   programs.nix-ld.enable = true;
