@@ -29,7 +29,7 @@
   nixpkgs.config.permittedInsecurePackages = [
     "broadcom-sta-6.30.223.271-59-6.18.35"
     "broadcom-sta-6.30.223.271-59-6.18.38"
-
+    "broadcom-sta-6.30.223.271-59-6.18.39"
   ];
   boot.kernelModules = [ "wl" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [
