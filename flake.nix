@@ -11,6 +11,7 @@
     nixosConfigurations.nixos-macbook = nixpkgs.lib.nixosSystem {
       specialArgs = {
         hostname = "nixos-macbook";
+        inherit inputs;
       };
 
       modules = [
