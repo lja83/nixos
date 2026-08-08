@@ -7,6 +7,7 @@
 {
   imports = [
     ./gns3.nix
+    ./bluetooth.nix
   ];
 
   nixpkgs.overlays = [

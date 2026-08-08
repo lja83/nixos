@@ -7,7 +7,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./bluetooth.nix
     ./ai.nix
   ];
 
