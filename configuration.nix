@@ -180,9 +180,11 @@
     inter
     adwaita-fonts
     nerd-fonts.fira-code
+    nerd-fonts.symbols-only
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-color-emoji
+    font-awesome
     liberation_ttf
     dejavu_fonts
   ];
