@@ -13,7 +13,16 @@
   };
 
   environment.systemPackages = with pkgs; [
+    brightnessctl
+    foot
+    fuzzel
+    pavucontrol
+    swaylock
+    wev
   ];
+
+  security.polkit.enable = true;
+  security.pam.services.swaylock = {};
 
   programs.waybar = {
     enable = true;
