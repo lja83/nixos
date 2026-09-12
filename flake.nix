@@ -17,6 +17,7 @@
       modules = [
         ./configuration.nix
         ./hosts/macbook
+        ./mango.nix
       ];
     };
 
@@ -28,7 +29,8 @@
 
       modules = [
         ./configuration.nix
-        ./niri.nix
+        # ./niri.nix
+        ./mango.nix
         ./hosts/desktop
       ];
     };

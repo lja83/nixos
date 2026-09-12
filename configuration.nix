@@ -8,7 +8,6 @@
   imports = [
     ./gns3.nix
     ./bluetooth.nix
-    ./mango.nix
   ];
 
   nixpkgs.overlays = [
@@ -153,6 +152,7 @@
     eog
     eza
     file
+    ffmpeg
     git
     htop
     inetutils
@@ -175,6 +175,17 @@
   ];
 
   programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    bzip2
+    libdrm
+    libGL
+    wayland
+    libxkbcommon
+    alsa-lib
+
+    glibc
+    stdenv.cc.cc
+  ];
 
   fonts.packages = with pkgs; [
     inter
